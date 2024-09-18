@@ -1,14 +1,19 @@
 # Cryptographie basée sur les codes
 1) Algorithme ISD (Information Set Decoding)
+   
 a) expliquer rapidement le principe de l'algorithme vu en cours (version de base),
 rappeler sa complexité
+
 b) programmer une inversion de matrice binaire par la methode du pivot de Gauss
+
 c) programmer l'algorithme ISD et le tester pour les parametres suivants :
+
  n=400 k=200 poids de l'erreur t=20 (parametres faciles pour un McEliece)
  n=1000 k=500 t=10
 Donnez vos temps de calcul.
 
-2) Système de chiffrement MDPC
+3) Système de chiffrement MDPC
+   
 Remarque : vous pouvez vous référer au document cbc_rev2.pdf sur le discord, paragraphe
 1.4.3 (ce schéma correspond au schéma BIKE-2 soumis au NIST).
 a) rappeler le principe de l'algorithme BitFlip vu en TP
