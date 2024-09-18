@@ -1,42 +1,40 @@
-#include "PRANGE_ISD.h"
+#include "ChiffreMDPC.h"
 
 int main(){
-    srand(time(NULL));
 
-    int n ;
-    int k ;
-    int poids;
-    int i, j;
-    int s[MAX_N];
-    FILE*f = fopen("resultat.txt", "w");
-    //int poids = 1;
-    int H[MAX_N][MAX_N];
 
-    do{
-        printf("Entrer la valeur de n: ");
-        scanf("%d", &n);
-        printf("Entrer la valeur de k: ");
-        scanf("%d", &k);
-        printf("Entrer la valeur du poids: ");
-        scanf("%d", &poids);
-    }while((n <= 0 || n > MAX_N) && (k <= 0 || k > K) && (poids < 0 || poids > n - k));
+	int n = 10;
+	Polynome *p;
+	Polynome *h0;
+	Polynome *h1;
+	Polynome *h = malloc(n * sizeof(int));
+	Polynome*resultat = malloc(n * sizeof(int));
+	int H[N][N];
+	int i;
+	
+	h = key_generation(n, h0, h1);
+	for(i = 0; i < n; i++){
+		printf("%d ", h->coefs[i]);
+	}
+	printf("\n");
+	Polynome *m;
+	Polynome *resultat1 = malloc(n * sizeof(int)); 
+	resultat1 = chiffrement(n, m, h);
+	afficher_chiffrement(n,resultat1);
 
-    genere_matrice_aleatoire(H, n, k);
+	//afficher_Polynome(n,p);
+	//rot(n, h0, H);
+	//rot(n, h1, H,0);
+	//resultat = multiplier_vecteur_matrice(n, p,H);
 
-    for(i = 0; i < n; i++){
-        s[i] = rand() % 2;
-    }
 
-    //Afficahge de la matrice de contrôle
-    print_matrix(H, n - k, n);
-    double cpu_time_used;
+	free(resultat1);
+	free(resultat);
+	free(h);
 
-    clock_t start = clock();
-    Prange_ISD(H, s, n, k, poids);
-    clock_t end = clock();
-    cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-    printf("Temps de calcul: %f\n", cpu_time_used);
-    fprintf(f, "Temps de calcul: %lf\n", cpu_time_used);
-    fclose(f);
-    return 0;
+
+
+	
+
+	return 0;
 }
